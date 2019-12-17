@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+
+            <a class="btn btn-primary" id="btnAdd" href="/add">
+                <i class="fas fa-plus-square"></i> Agregar Auditoría
+            </a>
+        
+            <table class="table table-bordered table-hover" style="font-size: .9em;">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo de Auditoría</th>
+                    <th>Número de Auditoria</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.id }}</td>
+                    <td><strong>{{ entry.tipo_auditoria.name if entry.tipo_auditoria.name != None else "" }}</strong></td>
+                    <td>{{ entry.num_auditoria if entry.num_auditoria != None else ""}}</td>
+                    <td style="text-align: center;">
+                        <a class="btn btn-info"   style="padding:.2rem .5rem;font-size: .9em;background:#5792d8" href="/update/{{ entry.id }}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" style="padding:.2rem .5rem;font-size: .9em;" href="/delete/{{ entry.id }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+

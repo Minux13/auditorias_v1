@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                <div class="row">
+          
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="tipo_auditoria" class="form-control" required >
+                                <option value=""> -- Tipo Auditoria --</option>
+                                {% for ta in tipo_auditoria %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.tipo_auditoria_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="organo_fiscalizador" class="form-control" required >
+                                <option value=""> -- Organo fiscalizador --</option>
+                                {% for ta in organo_fiscalizador %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.organo_fiscalizador_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                                 
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control datepicker" type="text" name="anio_cuenta_publica" placeholder="Año cuenta publica" value="{{ '' if auditoria.anio_cuenta_publica == None or auditoria.anio_cuenta_publica == '' else auditoria.anio_cuenta_publica.strftime('%Y-%m-%d') }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="num_auditoria" placeholder="Num auditoria" value="{{auditoria.num_auditoria if auditoria.num_auditoria != None}}" >
+                        </div>
+                    </div>
+                                 
+                                 
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="tipo_entidad" class="form-control" >
+                                <option value=""> -- Tipo entidad --</option>
+                                {% for ta in tipo_entidad %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.tipo_auditoria_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                   
+                    </div>
+
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <select name="entidad" class="form-control" >
+                                <option value=""> -- Entidad --</option>
+                                {% for ta in entidad %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.entidad_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <select name="estatus_auditoria" class="form-control" >
+                                <option value=""> -- Estatus auditoria --</option>
+                                {% for ta in estatus_auditoria %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.estatus_auditoria_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <select name="fondo" class="form-control" >
+                                <option value=""> -- Fondo --</option>
+                                {% for ta in fondo %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.fondo_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control datepicker" type="text" name="inicio" placeholder="Fecha de Inicio" value="{{ '' if auditoria.inicio == None or auditoria.inicio == '' else auditoria.inicio.strftime('%Y-%m-%d')}}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control datepicker" type="text" name="cierre" placeholder="Fecha de Cierre" value="{{ '' if auditoria.cierre == None or auditoria.cierre == '' else auditoria.cierre.strftime('%Y-%m-%d') }}">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <select name="municipio" class="form-control" >
+                                <option value=""> -- Municipio --</option>
+                                {% for ta in municipios %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.municipio_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="obra" placeholder="Obra" value="{{auditoria.obra if auditoria.obra != None}}" >
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="accion" class="form-control" >
+                                <option value=""> -- Accion --</option>
+                                {% for ta in accion %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.accion_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="observacion" class="form-control" >
+                                <option value=""> -- Observacion --</option>
+                                {% for ta in observacion %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.observacion_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="estatus_observacion" class="form-control" >
+                                <option value=""> -- Estatus observacion --</option>
+                                {% for ta in estatus_observacion %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.estatus_observacion_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="clasificacion" class="form-control" >
+                                <option value=""> -- Clasificacion --</option>
+                                {% for ta in clasificacion %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.clasificacion_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select name="tipo" class="form-control" >
+                                <option value=""> -- Tipo --</option>
+                                {% for ta in tipo %}
+                                <option value="{{ ta.id }}" {{ 'selected' if auditoria.tipo_id == ta.id }} > {{ta.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>                    
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="observado" placeholder="Observado" value="{{auditoria.observado}}" >
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="solventado" placeholder="Solventado" value="{{auditoria.solventado}}" >
+                        </div> 
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="pendiente_solventar" placeholder="Pendiente solventar" value="{{auditoria.pendiente_solventar}}" >
+                        </div> 
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="reintegrar" placeholder="Reintegrar" value="{{auditoria.reintegrar}}" >
+                        </div> 
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="atendido" placeholder="Atendido" value="{{auditoria.atendido}}" >
+                        </div> 
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="number" name="pendiente_atender" placeholder="Pendiente atender" value="{{auditoria.pendiente_atender}}" >
+                        </div> 
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control datepicker" type="text" name="notificacion_solventacion" placeholder="Notificacion solventacion" value="{{ '' if auditoria.notificacion_solventacion == None or auditoria.notificacion_solventacion == '' else auditoria.notificacion_solventacion.strftime('%Y-%m-%d')}}" >
+                        </div> 
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea class="form-control" name="observaciones" cols="100" placeholder="Observaciones">{{auditoria.observaciones if auditoria.observaciones != None}}</textarea>
+                        </div> 
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="documentos" placeholder="Documentos" value="{{auditoria.documentos if auditoria.documentos != None}}" >
+                        </div> 
+                    </div>
+
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" type="submit" id="btnSave">
+                            Guardar
+                        </button>
+                    </div>
+                
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+        
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- Font Awersome -->
+    <link href="/static/all.css" rel="stylesheet">
+    <style>
+        #btnSave{
+            float: right; 
+            background: #ffffff;
+            color: #713574;
+            border-color: #713574;
+        }
+        #btnAdd{
+            float: right; 
+            background: #ffffff;
+            color: #737;
+            border-color: #ddd;
+            margin-bottom: 15px; 
+            cursor: pointer;
+        }
+        .form-control{
+            font-size: 0.95rem;
+        }
+        .table td, .table th {
+            padding: .55rem .76rem;
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+
+/* Sidebar */
+#sidebar-wrapper{
+  z-index:1;
+  position: fixed;
+  width:0;
+  height:100%;
+  overflow-y:hidden;
+  background: linear-gradient(to bottom,#611554 0,#713574 100%);   /*linear-gradient(to bottom,#563d7c 0,#6f5499 100%);*/
+  opacity:0.9;
+	transition:all .5s;
+	/*display:flex;
+	align-items:center;
+    */
+}
+
+/* Main Content */
+#page-content-wrapper{
+  width: 100%;	
+  position: absolute;
+  padding:15px;
+	transition:all .5s;
+}
+
+#menu-toggle{
+	transition:all .3s;
+	font-size:1.3em;
+    margin: 0 0 10px 3px;
+    padding: 2px 8px;
+    color: #785d9c;
+}
+/* Change the width of the sidebar to display it*/
+#wrapper.menuDisplayed #sidebar-wrapper{
+  width:250px;
+}
+
+#wrapper.menuDisplayed #page-content-wrapper{
+  padding-left:250px;
+}
+
+/* Sidebar styling */
+.sidebar-nav{
+  padding:0;
+  list-style:none; 
+	transition:all .5s;
+	width:100%;
+}
+
+.sidebar-nav li{
+  line-height:40px;  
+	width:100%;
+	transition:all .3s;
+	padding:10px 35px;
+}
+
+.sidebar-nav li a {
+  display:block;
+  text-decoration:none;
+  color:#ddd;
+}
+
+.sidebar-nav li:hover{
+  background:#8a4e8a;
+}
+
+
+
+
+    </style>
+    <script src="/static/jquery-3.4.1.min.js"></script>
+    <script src="/static/jquery-ui.min.js"></script>
+</head>
+<body>
+
+  <div id="wrapper" class="menuDisplayed">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <img style="width: 200px; margin: 15px 25px;">
+      <ul class="sidebar-nav">
+        <li><a href="/">Auditorías</a></li>
+      </ul>
+    </div>
+    
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <a href="#" class="btn" id="menu-toggle"> &#9776; </a>
+          </div>
+        </div>
+
+
+
+
+    {% block content %}{% endblock %}
+
+    <hr>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+	
+
+
+
+<!-- Font Awersome -->
+<script src="/static/all.js" rel="stylesheet">
+</script>
+
+<script>
+
+$(document).ready(function(){
+  $("#menu-toggle").click(function(e){
+    e.preventDefault();
+    $("#wrapper").toggleClass("menuDisplayed");
+  });
+
+  $('.datepicker').datepicker({
+      dateFormat: "yy-mm-dd"
+  });
+});
+
+</script>
+
+</body>
+</html>
