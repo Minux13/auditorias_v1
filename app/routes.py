@@ -270,7 +270,9 @@ def delete(id):
 
 
 
+@app.route('/create_cataloges')
 def createCataloges():
+
     existsTipoAuditoria = Tipo_auditoria.query.filter_by(id=4).first()
     if not existsTipoAuditoria:
         db.session.add(Tipo_auditoria(id=1, name="Financiera"))
@@ -340,6 +342,6 @@ def createCataloges():
         db.session.add( Municipios(id=49, name= "Santiago"))
         db.session.add( Municipios(id=50, name= "Vallecillo"))
         db.session.add( Municipios(id=51, name= "Villaldama"))
+        db.session.commit()
 
-
-createCataloges()
+    return "Catalogos creados"
