@@ -276,8 +276,8 @@ def createCataloges():
     existsTipoAuditoria = Tipo_auditoria.query.filter_by(id=4).first()
     if not existsTipoAuditoria:
         db.session.add(Tipo_auditoria(id=1, name="Financiera"))
-        db.session.add(Tipo_auditoria(id=2, name="Desempeño"))
-        db.session.add(Tipo_auditoria(id=3, name="Obra Pública"))
+        db.session.add(Tipo_auditoria(id=2, name="Desempeno"))
+        db.session.add(Tipo_auditoria(id=3, name="Obra Publica"))
         db.session.add(Tipo_auditoria(id=4, name="Normativas"))
         db.session.commit()
 
