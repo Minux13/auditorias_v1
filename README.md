@@ -45,12 +45,12 @@ Ingresar a la url:
 http://15.164.48.84:8080/addc/ **nombreTabla** / **id** / **valor**
 
 
-En *valor* se puede ingresar espacios.
+En **valor** se puede ingresar palabras con espacios.
 
 Los nombres de las tablas son:
 
 Tipo_auditoria     
-Organo_fiscalizador
+Organo_fiscalizador 
 Tipo_entidad       
 Entidad            
 Estatus_auditoria  
