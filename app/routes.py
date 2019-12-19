@@ -352,10 +352,13 @@ def createCataloges():
 def addCatalog(tablename, idv, value):
 
     catalogos = {
+        "Tipo_auditoria":      Tipo_auditoria      ,  
+        "Organo_fiscalizador": Organo_fiscalizador , 
         "Tipo_entidad":        Tipo_entidad        ,
         "Entidad":             Entidad             ,
         "Estatus_auditoria":   Estatus_auditoria   ,
         "Fondo":               Fondo               ,
+        "Municipios":          Municipios          ,
         "Acciones":            Acciones            ,
         "Observaciones":       Observaciones       ,
         "Estatus_observacion": Estatus_observacion ,
@@ -374,3 +377,91 @@ def addCatalog(tablename, idv, value):
     return strEntrada
 
 
+@app.route('/editc/<tablename>/<int:idv>/<value>', methods=['GET'])
+def editCatalog(tablename, idv, value):
+
+    catalogos = {
+        "Tipo_auditoria":      Tipo_auditoria      ,  
+        "Organo_fiscalizador": Organo_fiscalizador , 
+        "Tipo_entidad":        Tipo_entidad        ,
+        "Entidad":             Entidad             ,
+        "Estatus_auditoria":   Estatus_auditoria   ,
+        "Fondo":               Fondo               ,
+        "Municipios":          Municipios          ,
+        "Acciones":            Acciones            ,
+        "Observaciones":       Observaciones       ,
+        "Estatus_observacion": Estatus_observacion ,
+        "Clasificaciones":     Clasificaciones     ,
+        "Tipos":               Tipos               
+    }
+
+    entry = catalogos[tablename].query.get(idv)
+    entry.name = value
+    db.session.commit()
+
+    entradas = catalogos[tablename].query.all()
+    strEntrada = '<strong>Tabla: </strong>' + tablename + '<br><br>'
+    for e in entradas:
+        strEntrada = strEntrada + '<strong>id:</strong> ' + str(e.id) + '<strong> name:</strong> ' + e.name + '<br>'
+
+    return strEntrada
+
+
+
+
+@app.route('/deletec/<tablename>/<int:idv>', methods=['GET'])
+def deleteCatalog(tablename, idv):
+
+    catalogos = {
+        "Tipo_auditoria":      Tipo_auditoria      ,  
+        "Organo_fiscalizador": Organo_fiscalizador , 
+        "Tipo_entidad":        Tipo_entidad        ,
+        "Entidad":             Entidad             ,
+        "Estatus_auditoria":   Estatus_auditoria   ,
+        "Fondo":               Fondo               ,
+        "Municipios":          Municipios          ,
+        "Acciones":            Acciones            ,
+        "Observaciones":       Observaciones       ,
+        "Estatus_observacion": Estatus_observacion ,
+        "Clasificaciones":     Clasificaciones     ,
+        "Tipos":               Tipos               
+    }
+
+    entry = catalogos[tablename].query.get(idv)
+    db.session.delete(entry)
+    db.session.commit()
+
+    entradas = catalogos[tablename].query.all()
+    strEntrada = '<strong>Tabla: </strong>' + tablename + '<br><br>'
+    for e in entradas:
+        strEntrada = strEntrada + '<strong>id:</strong> ' + str(e.id) + '<strong> name:</strong> ' + e.name + '<br>'
+
+    return strEntrada
+
+
+
+
+@app.route('/ver_tabla/<tablename>', methods=['GET'])
+def verTabla(tablename):
+
+    catalogos = {
+        "Tipo_auditoria":      Tipo_auditoria      ,  
+        "Organo_fiscalizador": Organo_fiscalizador , 
+        "Tipo_entidad":        Tipo_entidad        ,
+        "Entidad":             Entidad             ,
+        "Estatus_auditoria":   Estatus_auditoria   ,
+        "Fondo":               Fondo               ,
+        "Municipios":          Municipios          ,
+        "Acciones":            Acciones            ,
+        "Observaciones":       Observaciones       ,
+        "Estatus_observacion": Estatus_observacion ,
+        "Clasificaciones":     Clasificaciones     ,
+        "Tipos":               Tipos               
+    }
+
+    entradas = catalogos[tablename].query.all()
+    strEntrada = '<strong>Tabla: </strong>' + tablename + '<br><br>'
+    for e in entradas:
+        strEntrada = strEntrada + '<strong>id:</strong> ' + str(e.id) + '<strong> name:</strong> ' + e.name + '<br>'
+
+    return strEntrada
