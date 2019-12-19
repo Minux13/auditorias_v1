@@ -61,18 +61,18 @@ Los nombres de las tablas son:
 
 ### Ver los elementos de una tabla 
 
-El path para ver los elementos de una tabla es /ver\_tabla/**nombre\_tabla**
+La url para ver los elementos de una tabla es:
 
-http://15.164.48.84:8080/ver\_tabla/**nombre\_tabla**
+http://15.164.48.84:8080/ver_tabla/ **nombreTabla**
 
 ### Editar un elemento a un catálogo
 
 Se editan de igual manera que para añadir un elemento pero el path de la url es ***http://15.164.48.84:8080/editc***, la url quedaría:
 
-http://15.164.48.84:8080/editc/**nombreTabla**/**id**/**valor**
+http://15.164.48.84:8080/editc/ **nombreTabla** / **id** / **valor**
 
 ### Eliminar un elemento de la tabla 
 
 El path de para eliminar un elemento es ***http://15.164.48.84:8080/deletec*** y la url quedaría:
 
-http://15.164.48.84:8080/deletec/**nombreTabla**/**id_a_eliminar**
+http://15.164.48.84:8080/deletec/ **nombreTabla** / **id_a_eliminar**
