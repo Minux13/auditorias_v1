@@ -39,7 +39,7 @@ Para crear los catalogos de municipios, tipo de auditoria y organo fiscalizador 
 
 Ingresar a la url: 
 
-http://15.164.48.84:8080/addc/**nombreTabla**/**id**/**valor**
+http://15.164.48.84:8080/addc/ **nombreTabla** / **id** / **valor**
 
 
 En *valor* se puede ingresar espacios.
