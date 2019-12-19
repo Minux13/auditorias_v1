@@ -35,6 +35,9 @@ flask run
 Para crear los catalogos de municipios, tipo de auditoria y organo fiscalizador ingresar a: /create_cataloges
 
 
+
+
+
 ### Añadir un elemento a un catálogo
 
 Ingresar a la url: 
@@ -46,18 +49,18 @@ En *valor* se puede ingresar espacios.
 
 Los nombres de las tablas son:
 
- -Tipo\_auditoria      
- -Organo\_fiscalizador 
- -Tipo\_entidad        
- -Entidad             
- -Estatus\_auditoria   
- -Fondo               
- -Municipios          
- -Acciones            
- -Observaciones       
- -Estatus\_observacion 
- -Clasificaciones     
- -Tipos      
+Tipo_auditoria     
+Organo_fiscalizador
+Tipo_entidad       
+Entidad            
+Estatus_auditoria  
+Fondo              
+Municipios         
+Acciones           
+Observaciones      
+Estatus_observacion
+Clasificaciones    
+Tipos              
 
 ### Ver los elementos de una tabla 
 
