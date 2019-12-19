@@ -11,10 +11,13 @@ cd auditorias_v1
 python3 -m venv env
 ```
 ```
-source env/bin/activate && &&  &&  &&  && 
+source env/bin/activate 
 ```
 ```
-pip install --upgrade pip && pip install -r requirements.txt 
+pip install --upgrade pip  
+```
+```
+pip install -r requirements.txt
 ```
 ```
 export FLASK_APP=run.py
