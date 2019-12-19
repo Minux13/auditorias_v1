@@ -345,3 +345,32 @@ def createCataloges():
         db.session.commit()
 
     return "Catalogos creados"
+
+
+
+@app.route('/addc/<tablename>/<int:idv>/<value>', methods=['GET'])
+def addCatalog(tablename, idv, value):
+
+    catalogos = {
+        "Tipo_entidad":        Tipo_entidad        ,
+        "Entidad":             Entidad             ,
+        "Estatus_auditoria":   Estatus_auditoria   ,
+        "Fondo":               Fondo               ,
+        "Acciones":            Acciones            ,
+        "Observaciones":       Observaciones       ,
+        "Estatus_observacion": Estatus_observacion ,
+        "Clasificaciones":     Clasificaciones     ,
+        "Tipos":               Tipos               
+    }
+
+    db.session.add( catalogos[tablename](id=idv, name= value))
+    db.session.commit()
+
+    entradas = catalogos[tablename].query.all()
+    strEntrada = '<strong>Tabla: </strong>' + tablename + '<br><br>'
+    for e in entradas:
+        strEntrada = strEntrada + '<strong>id:</strong> ' + str(e.id) + '<strong> name:</strong> ' + e.name + '<br>'
+
+    return strEntrada
+
+
